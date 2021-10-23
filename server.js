@@ -41,6 +41,9 @@ app.get('/', (req, res) => {
 
 // Routes
 app.use('/games', routes.games)
+app.use('/comments', routes.comments) // This needs to be changes once we start making comments.
+
+
 
 app.listen(PORT, ()=> {
   console.log('app is listening on port ' + PORT)

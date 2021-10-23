@@ -1,3 +1,4 @@
 module.exports = {
-  games: require('./games.routes')
+  games: require('./games.routes'),
+  comments: require('./comments.routes')
 }
