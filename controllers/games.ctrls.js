@@ -2,7 +2,7 @@ const db = require('../models')
 //crud routes here
 
 const index = (req,res) =>{
-    db.gamepricedb.find({}, (error, games) =>{
+    db.Game.find({}, (error, games) =>{
         if (error) return res.status(400).json({error: error.message})
 
         return res.status(200).json({
@@ -13,7 +13,7 @@ const index = (req,res) =>{
 }
 
 const create = (req,res) =>{
-    db.gamepricedb.create(req.body, (error, createdGame) =>{
+    db.Game.create(req.body, (error, createdGame) =>{
         if (error) return res.status(400).json({error: error.message})
         return res.status(200).json(createdGame)
     })
