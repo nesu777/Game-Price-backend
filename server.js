@@ -16,6 +16,7 @@ require('./config/db.connection')
 
 
 
+
 //use json
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -35,8 +36,8 @@ app.use(cors(corsOptions))
 
 app.get('/', (req, res) => {
   res.send('index route hit')
-
 })
+
 
 // Routes
 app.use('/games', routes.games)
