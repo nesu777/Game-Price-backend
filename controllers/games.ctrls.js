@@ -19,7 +19,31 @@ const create = (req,res) =>{
     })
 }
 
+const update = (req,res) =>{
+    db.Game.findByIdAndUpdate(
+        req.params.id,
+        {$set: req.body},
+        {new:true},
+        (error, updatedGame) =>{
+            if (error) return res.status(400).json({error: error.message})
+            return res.status(200).json(updatedGame)
+        }
+    )
+}
+
+const destroy = (req,res) =>{
+    db.Game.findByIdAndDelete(req.params.id, (error, deletedGame) =>{
+        if (error) return res.status(400).json({error: error.message})
+
+        return res.status(200).json({
+            message: `Game ${deletedGame.name} deleted successfully`
+        })
+    })
+}
+
 module.exports = {
     index,
     create,
+    update,
+    destroy
 }
