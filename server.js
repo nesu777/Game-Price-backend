@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 
 
 // Routes
-app.use('/games', routes.games)
+// app.use('/games', routes.games)
 app.use('/comments', routes.comments) // This needs to be changes once we start making comments.
 
 

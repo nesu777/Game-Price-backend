@@ -6,7 +6,6 @@ const index = (req,res) =>{
 
         return res.status(200).json({
             comments,
-            requestedAt: new Data().toLocaleString()
         })
     })
 }
