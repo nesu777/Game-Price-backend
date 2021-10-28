@@ -4,9 +4,7 @@ const index = (req,res) =>{
     db.Comment.find({}, (error, comments) =>{
         if (error) return res.status(400).json({error: error.message})
 
-        return res.status(200).json({
-            comments,
-        })
+        return res.status(200).json(comments)
     })
 }
 
