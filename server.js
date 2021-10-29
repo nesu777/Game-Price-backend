@@ -11,10 +11,12 @@ const PORT = process.env.port || 3003
 //express instance
 const app = express()
 
+const MongoDBStore = require('connect-mongodb-session')(session)
+
 //db connection
 require('./config/db.connection')
 
-
+require('dotenv').config()
 
 
 //use json
@@ -22,7 +24,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 //cors
-const whiteList = ['http://localhost:3000']
+const whiteList = ['http://localhost:3000', 'https://game-price-front.herokuapp.com']
 const corsOptions = {
   origin: function (origin, callback){
     if (whiteList.indexOf(origin) !== -1 || !origin){
@@ -33,6 +35,22 @@ const corsOptions = {
   }
 }
 app.use(cors(corsOptions))
+
+app.set('trust proxy', 1)
+
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoDBStore({
+    uri: process.env.MONGODB_URI,
+    collection: 'mySessions'
+  }),
+  cookie: {
+    sameSite: 'none',
+    secure: true
+  }
+}))
 
 app.get('/', (req, res) => {
   res.send('index route hit')
