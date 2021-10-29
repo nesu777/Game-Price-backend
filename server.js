@@ -1,7 +1,7 @@
 //external modules
 const express = require('express')
 const cors = require('cors')
-
+const session = require('express-session')
 //internal modules
 const routes = require('./routes')
 
