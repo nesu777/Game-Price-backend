@@ -56,6 +56,7 @@ app.get('/', (req, res) => {
   res.send('index route hit')
 })
 
+app.use(express.json());
 
 // Routes
 // app.use('/games', routes.games)
