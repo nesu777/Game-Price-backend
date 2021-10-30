@@ -18,7 +18,7 @@ const create = (req,res) =>{
 const update = (req,res) =>{
     db.Comment.findByIdAndUpdate(
         req.params.id,
-        {$set: req.body},
+        req.body,
         {new:true},
         (error, updatedComment) =>{
             if (error) return res.status(400).json({error: error.message})
