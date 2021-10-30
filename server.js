@@ -6,7 +6,7 @@ const session = require('express-session')
 const routes = require('./routes')
 
 //port !!CHANGE LATER!!
-const PORT = process.env.port || 3003
+const PORT = process.env.PORT || 3003
 
 //express instance
 const app = express()
