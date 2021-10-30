@@ -43,7 +43,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: new MongoDBStore({
-    uri: process.env.MONGODB_URI,
+    uri: process.env.MONGODBURI,
     collection: 'mySessions'
   }),
   cookie: {
